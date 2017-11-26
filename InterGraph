@@ -23,7 +23,7 @@ public class InterGraph extends JFrame implements ActionListener{
 	    this.setSize(300, 300);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
-	    this.setContentPane(new ImagePanel(new ImageIcon("mastermind.png").getImage()));
+	    this.setContentPane(new ImagePanel(new ImageIcon("mastermind.png").getImage())); //n'apparait pas
 
 	    container.setBackground(Color.lightGray);
 	    container.setLayout(new BorderLayout());
