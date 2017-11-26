@@ -6,6 +6,8 @@ import java.awt.Image;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+//Pour incruster l'image mais ne fonctionne pas
+
 public class ImagePanel extends JPanel {
 	
 	private Image img;
