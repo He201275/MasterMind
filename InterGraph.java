@@ -23,7 +23,7 @@ public class InterGraph extends JFrame implements ActionListener{
 	    this.setSize(300, 300);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
-	    this.setContentPane(new ImagePanel(new ImageIcon("mastermind.png").getImage()));
+	    this.setContentPane(new ImagePanel(new ImageIcon("mastermind.png").getImage())); //marche pas
 
 	    container.setBackground(Color.lightGray);
 	    container.setLayout(new BorderLayout());
@@ -34,7 +34,7 @@ public class InterGraph extends JFrame implements ActionListener{
 	    bouton3.addActionListener(this);
 	    
 	    //Image img = ImageIO.read(new File("mastermind.png"));
-        //label.drawImage(img, 0, 0, this);
+            //label.drawImage(img, 0, 0, this);
 
 	    JPanel south = new JPanel();
 	    south.add(bouton);
@@ -54,16 +54,16 @@ public class InterGraph extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		  if(arg0.getSource() == bouton)
-		    label.setText("Vous avez cliqué sur PLAY");
+		    label.setText("Vous avez cliquÃ© sur PLAY");
 
 		  if(arg0.getSource() == bouton2)
-		    label.setText("vous avez cliqué sur RULES");
+		    label.setText("vous avez cliquÃ© sur RULES");
 		  
 		  if(arg0.getSource() == bouton3)
 			label.setText("MASTERMIND");
 		}
 
-	  //…
+	  //â€¦
 	}
 //public void paintComponent(Graphics g){                
 		//    Font font = new Font("Arial", Font.BOLD, 20);
