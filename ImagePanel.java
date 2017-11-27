@@ -6,6 +6,8 @@ import java.awt.Image;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+//ne fonctionne pas mais devrait servir à importer une image
+
 public class ImagePanel extends JPanel {
 	
 	private Image img;
