@@ -1,4 +1,4 @@
-package P1;
+
 
 import java.lang.reflect.Array;
 import java.util.Scanner;
@@ -11,8 +11,6 @@ public class Main {
 		System.out.println("Entrez le nombre d'essai");
 		parametres[0] = input2.nextInt();
 		
-		System.out.println("Entrez la longueur du code");
-		parametres[1] = input2.nextInt();
 		
 		System.out.println("Entrez la valeur minimum");
 		parametres[2] = input2.nextInt();
@@ -22,6 +20,9 @@ public class Main {
 		
 		System.out.println("Autoriser la duplication? (Oui = 1 // Non = 0)");
 		parametres[4] = input2.nextInt();
+		
+		System.out.println("Entrez la longueur du code");
+		parametres[1] = input2.nextInt();
 		
 		return parametres;
 	}

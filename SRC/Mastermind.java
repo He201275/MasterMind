@@ -1,5 +1,3 @@
-package P1;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -70,31 +68,66 @@ public class Mastermind {
         System.out.println("Bienvenue dans MasterMind!");
         System.out.printf("Je pense à un code d'une longueur de %d , avec des nombres entre %d et %d.\n", longueurCode, minValeurCode, maxValeurCode);
         System.out.printf("La duplication de valeur est %s autorisé.\n", (duplicationAutorise ? " ": " non "));
-        System.out.printf("Saurez-vous trouvez le code en  %d essais?\n", nombreEssai);
+        System.out.printf("Saurez-vous trouver le code en  %d essais?\n", nombreEssai);
+        System.out.println(code);
+        
 
         boolean gagnant = false;
+        boolean essaiOk;
         Scanner input = new Scanner(System.in);
-        while (EssaiActuel < nombreEssai) {
-            System.out.printf("Essai %d: ", EssaiActuel);
-            String Essai = input.nextLine();
-
-            // Vérifie l'essai courant, et quitte si la correspondance est parfaite
-            resultatEssai resultat = EssaiSoumis(Essai);
-            if (resultat.isPerfectEssai()) {
-                gagnant = true;
-                break;
-            }
-
-            // Output the score, or a message, if either were provided
-            if (!resultat.getScore().isEmpty()) {
-                System.out.println(resultat.getScore());
-            } else if (!resultat.getMessage().isEmpty()) {
-                System.out.println(resultat.getMessage());
-            }
+        while (EssaiActuel <= nombreEssai || gagnant) {
+        	essaiOk = false;
+        	while (!essaiOk) {
+	            System.out.printf("Essai %d: ", EssaiActuel);
+	            String Essai = input.nextLine();
+	
+	            // Vérifie l'essai courant, et quitte si la correspondance est parfaite
+	            resultatEssai resultat = EssaiSoumis(Essai);
+	           
+	            if (resultat.isPerfectEssai()) {
+	                gagnant = true;
+	                
+	               break;
+	            }
+	
+	            // Output the score, or a message, if either were provided
+	            if (!resultat.getScore().isEmpty()) {
+	            	essaiOk = true;
+	                System.out.println(resultat.getScore());
+	                
+	            } else if (!resultat.getMessage().isEmpty()) {
+	                System.out.println(resultat.getMessage());
+	            }
+        	}
+        	if(gagnant){
+        		System.out.println("Vous avez réussi! New play?");
+        		Scanner input4 = new Scanner(System.in);
+        		String newGame = input4.nextLine();
+        		if (newGame.equalsIgnoreCase("y")){
+        			play();
+        		}
+        		else{
+        			System.out.println("Fin du game");
+        		}
+        		}
+        	
+        	 EssaiActuel++;
+        	
         }
-
-        String messageFinJeu = gagnant ? "Vous avez réussi!" : "Vous avez perdu :(";
-        System.out.println(messageFinJeu);
+        
+        System.out.println("Vous avez perdu! New play?");
+		Scanner input4 = new Scanner(System.in);
+		String newGame = input4.nextLine();
+		if (newGame.equalsIgnoreCase("y")){
+			play();
+		}
+		else{
+			System.out.println("Fin du game");
+		}
+		
+        //String messageFinJeu = gagnant ? "Vous avez réussi!" : "Vous avez perdu :( Voulez-vous recommencer une partie?";
+        //System.out.println(messageFinJeu);
+        
     }
 
     /**
@@ -103,9 +136,12 @@ public class Mastermind {
     private void generationCode() {
         if (!duplicationAutorise) {
             int TailleRangeCode = maxValeurCode - minValeurCode; //Détermine la longueur min du code
-            if (TailleRangeCode < longueurCode) {
-                throw new RuntimeException("L'écart des valeurs doit être plus grand que la longueur du code! La duplication des valeurs n'est pas autorisé.");
+            while (TailleRangeCode < longueurCode) {
+                Scanner input3 = new Scanner(System.in);
+                System.out.println("L'écart des valeurs doit être plus grand que la longueur du code! La duplication des valeurs n'est pas autorisé.Veuillez introduire une longueur de code > au range des valeurs !");
+                longueurCode = input3.nextInt();
             }
+           
         }
 
         code = new HashMap<>();
@@ -126,11 +162,10 @@ public class Mastermind {
 
     /**
      * Evalue l'exactitude de l'essai soumis 
-     * @param Essai le string essai soumis par le joueur
+     * @param Essai le string soumis par le joueur
      * @return le resultat de l'évaluation de l'essai
     */
     private resultatEssai EssaiSoumis(String Essai) {
-        EssaiActuel++;
 
         if (Essai.length() != longueurCode) {
             String errorMessage = String.format("l'essai doit avoir %d valeurs!", longueurCode);
@@ -173,7 +208,7 @@ public class Mastermind {
                 switch (checkValeurEssai(nombre, i)) {
                     case '+':
                         scorePluses++;
-                        correspondance.put(nombre, correspondance.getOrDefault(nombre, 0) + 1); //The old value will be replaced by a new one if the key is already on the HashMap object.
+                        correspondance.put(nombre, correspondance.getOrDefault(nombre, 0) + 1); 
                         break;
                     case '-':
                         scoreMinuses++;
@@ -217,9 +252,10 @@ public class Mastermind {
         char score = '\0';
 
         if (code.containsKey(nombre)) { 
-            HashSet<Integer> indices = code.get(nombre); // renvoi la valeur à laquelle la clé spécifié est lié ou null
+            HashSet<Integer> indices = code.get(nombre); // renvoie la valeur à laquelle la clé spécifiée est liée ou null
             if (indices.contains(index)) { 
                 score = '+';
+               
             } else {
                 score = '-';
             }
