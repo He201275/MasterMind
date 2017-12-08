@@ -66,6 +66,7 @@ public class Mastermind {
      */
     public void play() {
         generationCode();
+        EssaiActuel = 1;
 
         System.out.println("Bienvenue dans MasterMind!");
         System.out.printf("Je pense à un code d'une longueur de %d , avec des nombres entre %d et %d.\n", longueurCode, minValeurCode, maxValeurCode);
@@ -77,7 +78,7 @@ public class Mastermind {
         boolean gagnant = false;
         boolean essaiOk;
         Scanner input = new Scanner(System.in);
-        while (EssaiActuel <= nombreEssai || gagnant) {
+        while (EssaiActuel <= nombreEssai) {
         	essaiOk = false;
         	while (!essaiOk) {
 	            System.out.printf("Essai %d: ", EssaiActuel);
@@ -95,41 +96,45 @@ public class Mastermind {
 	            // Output the score, or a message, if either were provided
 	            if (!resultat.getScore().isEmpty()) {
 	            	essaiOk = true;
+	            	
 	                System.out.println(resultat.getScore());
 	                
-	            } else if (!resultat.getMessage().isEmpty()) {
-	                System.out.println(resultat.getMessage());
-	            }
+	            } //else if (!resultat.getMessage().isEmpty()) {
+	                //System.out.println(resultat.getMessage());
+	            //}
         	}
         	if(gagnant){
         		System.out.println("Vous avez réussi! New play?");
-        		Scanner input4 = new Scanner(System.in);
-        		String newGame = input4.nextLine();
+        		//Scanner input4 = new Scanner(System.in);
+        		String newGame = input.nextLine();
         		if (newGame.equalsIgnoreCase("y")){
         			play();
-        		}
-        		else{
+        		} else {
         			System.out.println("Fin du game");
+        			System.exit(0);
         		}
-        		}
+        	}
         	
-        	 EssaiActuel++;
-        	
+        	 EssaiActuel++;        	
         }
         
         System.out.println("Vous avez perdu! New play?");
-		Scanner input4 = new Scanner(System.in);
-		String newGame = input4.nextLine();
+		//Scanner input4 = new Scanner(System.in);
+		String newGame = input.nextLine();
 		if (newGame.equalsIgnoreCase("y")){
-			play();
+			
+			 play();
 		}
 		else{
 			System.out.println("Fin du game");
+			System.exit(0);
+			
 		}
 		
         //String messageFinJeu = gagnant ? "Vous avez réussi!" : "Vous avez perdu :( Voulez-vous recommencer une partie?";
         //System.out.println(messageFinJeu);
         
+		
     }
 
     /**
