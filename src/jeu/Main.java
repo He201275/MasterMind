@@ -30,9 +30,12 @@ public class Main {
 	}
    
     public static void main(String[] args) {
+    	
+    	
+    	
     
     	
-    	System.out.println("Voulez-vous configurer les paramètres de votre partie? y/n");
+    	/*System.out.println("Voulez-vous configurer les paramètres de votre partie? y/n");
     		Scanner input = new Scanner(System.in);
     			String choix = input.nextLine();
     				
@@ -44,14 +47,15 @@ public class Main {
     					int maxValeurCode = parametres[3];
     					int duplicationAutorisee = parametres[4];
     					Mastermind game = new Mastermind(nombreEssai, longueurCode, minValeurCode, maxValeurCode, duplicationAutorisee);
-    					game.play();
+    					
+    					//game.play();
     					
     		
     	}
     				
     	else {
     		Mastermind game = new Mastermind();
-    		game.play();
-    	}
-    }
+    		//game.play();
+    	} */
+    } 
 }
