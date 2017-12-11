@@ -44,7 +44,7 @@ public class Score extends Partie {
             }
         }
 
-        return getScoreString(scorePluses, scoreMinuses,perfectEssai);
+        return getScoreString(scorePluses, scoreMinuses);
 
 }
 	
@@ -75,13 +75,14 @@ public class Score extends Partie {
         char score = '\0';
 
         if (code.getCode().containsKey(nombre)) { 
-            HashSet<Integer> indices = code.getCode(nombre); // renvoie la valeur à laquelle la clé spécifiée est liée ou null
-            if (indices.contains(index)) { 
+        	HashMap<Integer, HashSet<Integer>> indices = code.getCode();// renvoie la valeur à laquelle la clé spécifiée est liée ou null
+            System.out.println(indices.toString());
+        	/*if (indices.contains(index)) { 
                 score = '+';
                
             } else {
                 score = '-';
-            }
+            }*/
         }
 
         return score;

@@ -35,7 +35,7 @@ public class Main {
     	
     
     	
-    	/*System.out.println("Voulez-vous configurer les paramètres de votre partie? y/n");
+    	System.out.println("Voulez-vous configurer les paramètres de votre partie? y/n");
     		Scanner input = new Scanner(System.in);
     			String choix = input.nextLine();
     				
@@ -55,7 +55,8 @@ public class Main {
     				
     	else {
     		Mastermind game = new Mastermind();
-    		//game.play();
-    	} */
+    		game.play();
+    		
+    	} 
     } 
 }

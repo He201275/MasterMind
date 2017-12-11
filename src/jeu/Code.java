@@ -54,6 +54,13 @@ public class Code {
 	public HashMap<Integer, HashSet<Integer>> getCode() {
 		return this.combinaison;
 	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		
+		return combinaison.toString();
+	}
     
 
 }
